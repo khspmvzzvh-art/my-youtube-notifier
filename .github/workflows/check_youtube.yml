@@ -2,15 +2,14 @@ name: Check YouTube Feed
 
 on:
   schedule:
-    # 15分ごとに実行（UTC基準）
     - cron: '*/15 * * * *'
-  workflow_dispatch: # 手動実行ボタンも用意
+  workflow_dispatch:
 
 jobs:
   check-feed:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 既読IDの更新コミットに必要な権限
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -21,14 +20,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-
-      - name: Run script
+      - name: Install and Run
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
+          python -m pip install requests feedparser
           python main.py
 
       - name: Commit and push changes
