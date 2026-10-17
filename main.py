@@ -7,7 +7,7 @@ import requests
 SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
 
 # 対象のYouTubeチャンネルID
-CHANNEL_ID = "ここにチャンネルIDを入れる"  # 例: UC_x5XG1OV2P6uYZ5t9VLSUM
+CHANNEL_ID = "UCXRlIK3Cw_TJIQC5kSJJQMg"  # 例: UC_x5XG1OV2P6uYZ5t9VLSUM
 RSS_URL = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
 NOTIFIED_FILE = "notified_ids.txt"
 
